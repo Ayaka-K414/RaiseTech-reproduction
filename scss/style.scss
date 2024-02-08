@@ -1,0 +1,510 @@
+// メディアクエリ
+$pc01: 1280px; //ロゴ横のspanを非表示
+$pc02: 1260px; //navメニューpadding10pxに変更
+$pc03: 1200px; //ハンバーガーメニューに切り替え
+$pc04: 1078px; //コンテンツの変更
+$tablet: 767px; //タブレット
+$sp: 500px; //スマホ
+
+@mixin pc01 {
+    @media screen and (max-width: $pc01){
+        @content;
+    }
+}
+
+@mixin pc02 {
+    @media screen and (max-width: $pc02){
+        @content;
+    }
+}
+
+@mixin pc03 {
+    @media screen and (max-width: $pc03){
+        @content;
+    }
+}
+
+@mixin pc04 {
+    @media screen and (max-width: $pc04){
+        @content;
+    }
+}
+
+
+@mixin tablet {
+    @media screen and (max-width: $tablet){
+        @content;
+    }
+}
+
+@mixin sp {
+    @media screen and (max-width: $sp){
+        @content;
+    }
+}
+
+
+//初期設定
+* {
+    margin: 0; //ブラウザデフォルトの余白リセット
+    padding: 0; //ブラウザデフォルトの余白リセット
+    box-sizing: border-box; //paddingを含めたboxsizeにする
+} 
+
+html {
+    font-size: 62.5%; //初期値1.6remが計算上ややこしいので初期値1remにするための割合指定
+}
+
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 1.6rem;
+    color: #121212;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #121212;
+    cursor: pointer;
+}
+
+
+//各要素にcss設定（幅、高さ、揃え、余白、色、フォント関連）
+//ヘッダー
+header {
+    width: 100%;
+    height: 70px;
+    display: flex;//ブロック要素の場合、その子要素を横並びにする（インライン要素に使う場合はdisplay:inline-flex）
+    justify-content: space-between;//子要素を横方向に動かして配置する
+    align-items: center;//子要素を縦方向に動かして配置する
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: #fff;
+    @include pc03 {
+        height: 50px;
+    }
+}
+
+//ヘッダーのロゴと横のコメント
+.header-logo {
+    margin: 0 0 0 21px;
+    @include pc03 {
+        margin: 10px;
+    }
+    p {
+        a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 900;
+            line-height: 1.3;
+            img {
+                height: 33px; //imgはインライン要素だけど幅と高さが指定できる
+                @include pc03 {
+                    height: 30px;
+                    width: 160px;
+                }
+            }
+            span {
+                margin-left: 16px;
+                font-size: 1.4rem;
+                @include pc01 {
+                    display: none;
+                }
+                strong {
+                    font-size: 1.8rem;
+                    font-weight: bolder;
+                }
+            }
+        }           
+    }
+}
+
+
+//ナビメニュー（アコーディオンメニュー）
+.gmenu {     //nav
+    @include pc03 {
+        display: none;//1200pxまではナビメニューを非表示にする
+        position: absolute;
+        top: 50px;
+        left: 0;
+        right: 0;
+        background-color: #FFF;
+        &.active {
+            display: block;
+        }
+    }
+    &-main {     //ul
+        display: flex;
+        @include pc03 {
+            flex-direction: column;
+            margin: 0;
+            padding: 0;    
+        }
+        &__items {     //li
+            display: flex;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.6rem;
+            position: relative;
+            @include pc02 {
+                padding: 0 10px;//1260px以下になったらナビメニューのpaddingを小さくする
+            }
+            @include pc03 {
+                padding: 0;
+                display: block;
+            }
+            a {
+                display: block;
+                width: 100%;
+                height: 70px;
+                text-align:center;
+                line-height:70px;
+                padding: 0 15px;
+                @include pc03 {
+                    text-align: left;
+                    padding: 10px;
+                    height: auto;
+                    line-height: 1.7;
+                }
+                &:hover {
+                    background-color: #D4F1F8;
+                    @include pc03 {
+                        background-color: #F3FAFB;
+                    }    
+                }
+            }
+            .gmenu-sub {     //ul
+                display: none;//全ての画面で一旦サブメニューを非表示
+                position: absolute;
+                top: 70px;
+                left: 0;
+                background-color: #E9F8FB;
+                white-space: nowrap;
+                @include pc03 {
+                    position: static;
+                }
+                li {
+                    a {
+                        display: block;
+                        text-align: left;
+                        height: auto;
+                        font-weight: normal;
+                        background-color: #E9F8FB;
+                        line-height: 52px;
+                        padding: 3px 60px 3px 15px;
+                        position: relative;
+                        @include pc03 {
+                            background-color: #FFF;
+                            padding: 10px 10px 10px 25px;
+                            line-height: 1.7;
+                        }
+                        &:hover {
+                            color: #2498B3;
+                            background-color: #FFF;
+                            @include pc03 {
+                                color: #121212;
+                                background-color: #F3FAFB;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.contact {
+    background-color: #2498b3;
+    @include pc03 {
+        display: none;
+    }
+    a {
+        color: #fff;
+        &:hover {
+            background-color: #2498b3;
+        }    
+        @include pc02 {
+            padding: 0 10px;
+        }
+        @include pc03 {
+            display: none;
+        }
+    }
+}
+
+
+//ハンバーガーメニュー
+.hamburger-menu {
+    display: none;//全ての画面で非表示
+    width: 50px;
+    height: 50px;
+    position: relative;//三本線の配置に必要
+    border: none;//ボタンの枠線を消す
+    background-color: transparent;//背景色を透明にする
+    appearance: none;//標準のボタンの装飾を無効化
+    padding: 0;
+    cursor: pointer;//マウスオーバーした時に指のマークに変える
+    @include pc03 {
+        display: block;//非表示にしていたのを1200px以下で表示させる????
+    }
+}
+
+@include pc03 {
+    .hamburger-menu {
+        &.active {
+        background-color: #2498b3;
+        transition: all 0.5s;
+            span {
+                width: 0px;
+            }
+        }
+        &::before,&::after { //擬似要素(beforeが三本線の上、afterが三本線の下)
+            content: "";//擬似要素を指定する時はこの記述が必須
+            width: 23px;//三本線の幅
+            height: 2px;//三本線の太さ
+            background-color: #2498b3;//三本線の色
+            position: absolute;
+            left: calc(50% - 23px/2);//幅50pxの左から50%(25px地点)から、spanの中心点である23px/2(11.5px)分を左に戻す
+            transition: all 0.2s;
+        }
+        &::before {
+            top: 15px;
+        }
+        &::after {
+            top: 33px;
+        }
+        &.active::before {
+            transform: rotate(45deg);//時計回りに45度傾ける
+            background-color: #fff;
+            top: 24px;
+        }
+        &.active::after {
+            transform: rotate(-45deg);
+            background-color: #fff;
+            top: 24px;
+        }
+        span {
+            width: 23px;
+            height: 2px;
+            background-color: #2498b3;
+            position: absolute;
+            left: calc(50% - 23px/2);
+            top: 24px;
+            transition: all 0.2s;
+        }
+    }
+}
+
+@include pc03 {
+    .hover-mark > a::before {//横線
+        display: block;
+        content: "";
+        position: absolute;
+        top: 24px;
+        right: 13px;
+        width: 24px;
+        height: 2px;
+        margin-top: -1px;
+        background-color: #121212;
+    }
+    .close > a::after {//縦線
+        display: block;
+        content: "";
+        position: absolute;
+        top: 24px;
+        right: 24px;
+        width: 2px;
+        height: 24px;
+        margin-top: -12px;
+        background-color: #121212;
+    }    
+}
+
+
+
+//メイン
+main {
+    padding-top: 70px;
+    //ヘッダーの高さ分のpaddingでメインの中の要素の始点をヘッダー直下に指定する
+    //positionfixedは要素の高さを保持しないためpaddingを指定しないとヘッダーの下に入り込んでしまう
+    @include pc03 {
+        padding-top: 50px;
+    }
+}
+
+//メインビジュアルの画像3枚を重ねて表示
+.main-visual {
+    &__bg {
+        background-image: url(../images/bg-hero3.webp);
+        height: 650px;
+        width: 100%;
+        position: relative;//relativeには値を指定しないこともある
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;    
+        background-attachment: fixed;//スクロールしても背景画像として固定される
+        overflow: hidden;
+        @include tablet {
+            height: 300px;
+            padding-bottom: 320px;
+            background-position: center -25px;
+        }
+    }
+    &__layer1 {
+        background-image: url(../images/bg-hero1.webp);
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        z-index: 100;
+        padding-top: 80px;
+        background-repeat: no-repeat;
+        background-size: initial;
+        background-position: center center;
+        @include tablet {
+            background-size: cover;
+            align-items: flex-end;
+            background-position: center -30px;
+        }
+    }
+    &__layer2 {
+        background-image: url(../images/bg-hero2.webp);
+        background-repeat: no-repeat;
+        background-size: initial;
+        background-position: center center;
+        @include tablet {
+            background-size: cover;
+            background-position: center -25px;
+        }
+    }    
+}
+
+//レイヤーのポジションクラス
+.layer-position {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+//メインビジュアルの上にあるメインタイトル（白い箱）
+.main-visual__ttl {
+    max-width: 530px;
+    padding: 43px 40px 16px 40px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 10px;
+    @include tablet {
+        width: 100%;
+        max-width: 100%;
+        padding: 9px 0 13px 0;
+        border-radius: 0;
+    }
+    h1 {
+        img {
+            width: 280px;
+            @include tablet {
+                display: none;
+            }
+        }
+    }
+    p {
+        margin: 16px 0 8px 0;
+        font-size: 1.6rem;
+        font-weight: 700;
+        line-height: 1.7;
+        @include tablet {
+            margin: 6.5px 0;
+            font-size: 1.3rem;
+        }
+    }
+    a {
+        display: inline-block;
+        margin-top: 15px;
+        padding: 24px 37px;
+        color: #fff;
+        font-size: 1.8rem;
+        font-weight: 700;
+        line-height: 1.0;
+        border: solid 1px #c3c3c3;
+        background-color: #2498b3;
+        border-radius: 4px;
+        transition: 0.5s;
+        @include tablet {
+            padding: 12px 18px;
+            font-size: 1.6rem;
+        }
+    }
+}
+
+//メインビジュアル直下の黒い背景〜3つのアイテム
+.section-bg {
+    padding: 64px 0;
+    background-color: #000;
+    .section-wrap {
+        max-width: 1078px;
+        margin: 0 auto;
+        @include pc04 {
+            margin: 0 10px;
+        }
+        .contents {
+            position: relative;
+            z-index: 500;
+            margin-top: -270px;
+            display: flex;
+            justify-content: center;
+            color: #fff;
+            font-weight: 700;
+            line-height: 1.7;
+            font-size: 1.6rem;
+            @include tablet {
+                margin-top: 0;
+                flex-direction: column;
+                align-items: center;
+            }
+            p {
+                margin-top: 8px;
+            }
+            .items {
+                width: 229px;
+                margin: 0 50px;
+                @include pc04 {
+                    width: 29.33%;
+                    margin: 0 2%;
+                }
+                @include tablet {
+                    width: auto;
+                    margin-bottom: 40px;
+                }
+                .section-ttl {
+                    text-align: center;
+                    h2 {
+                        margin-top: 4.8px;
+                    }
+                }
+            }
+        }        
+    }
+}
+
+//fontawesomeで引っ張ってきたアイコンの設定
+.icon {
+    width: 230px;
+    height: 230px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    color: #000;
+    background-color: #fff;
+    border: solid 6px #000;
+    border-radius: 50%;//50%で丸い背景が作れる
+    .fa-solid {
+        font-size: 100px;
+    }
+}

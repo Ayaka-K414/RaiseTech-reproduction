@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <!--
+        レスポンシブを記述する上で必要
+        width~は実際の解像度ではなく端末やブラウザに合わせた値を返す（レスポンシブ対応には必須）
+        initial-scale=1.0はページが表示された最初の倍率
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RaiseTech旧サイト">
+    <title>RaiseTech（レイズテック）|最速で稼げるプロになるエンジニアリングスクール</title>
+    <link rel="icon" href="./images/favicon.ico">
+    <link rel="stylesheet" href="./css/style.css">
+
+    <!-- googlefontsを適用したい時にコピペした記述 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;200;300;400;500;600;700;800;900&display=swap">
+
+    <!-- fontawesomeというサイトにあるアイコンを取り込みたい時に記述するリンク -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css">
+</head>
+
+<body>
+    <header>
+        <div class="header-logo">
+            <p>
+                <a href="http://127.0.0.1:5500/" alt="トップページへのリンク">
+                    <img src="./images/header-logo.svg" alt="ヘッダーロゴ">
+                    <span>最速で<strong>「稼げる」</strong>プロになる<br>エンジニアリングスクール</span>
+                </a>
+            </p> 
+        </div>
+        <div class="header-nav">
+            <button class="hamburger-menu" id="js-hamburger">
+                <span></span>
+            </button>
+            <nav class="gmenu">
+                <ul class="gmenu-main">
+                    <li class="gmenu-main__items gmenu-main__items01 hover-mark close">
+                        <a href="http://176.34.11.254/about-raisetech">はじめての方へ</a>
+                        <ul class="gmenu-sub gmenu-sub01">
+                            <li class="gmenu-sub__items">
+                                <a href="http://176.34.11.254/about-raisetech">マンガでわかるRaiseTech</a>
+                            </li>
+                            <li>
+                                <a href="http://176.34.11.254/support">サポート体制</a>
+                            </li>
+                            <li>
+                                <a href="http://176.34.11.254/trial-program">トライアル受講</a>
+                            </li>
+                            <li>
+                                <a href="http://176.34.11.254/job-finding-support">就職・転職支援制度</a>
+                            </li>
+                            <li>
+                                <a href="http://176.34.11.254/user-flow">ご利用の流れ</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="gmenu-main__items gmenu-main__items02 hover-mark close">
+                        <a>コース案内</a>
+                        <ul class="gmenu-sub gmenu-sub02">
+                            <li>
+                                <a href="http://176.34.11.254/courses/marketing-course">マーケティングコース</a>
+                            </li>
+                            <li>
+                                <a href="http://176.34.11.254/courses/design-course">デザインコース</a>
+                            </li>
+                            <li>
+                                <a href="http://176.34.11.254/courses/wordpress-sidejob-course">WordPress副業コース</a>
+                            </li>
+                            <li>
+                                <a href="http://176.34.11.254/courses/aws-full-course">AWSフルコース</a>
+                            </li>
+                            <li>
+                                <a href="http://176.34.11.254/courses/aws-automation-course">AWS自動化コース</a>
+                            </li>
+                            <li>
+                                <a href="http://176.34.11.254/courses/java-full-course">Javaフルコース</a>
+                            </li>
+                            <li>
+                                <a href="http://176.34.11.254/courses/java-framework-course">Javaフレームワークコース</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="gmenu-main__items">
+                        <a href="http://176.34.11.254/instructors">講師紹介</a>
+                    </li>
+                    <li class="gmenu-main__items gmenu-main__items03 hover-mark close">
+                        <a href="">卒業生の声・実績</a>
+                        <ul class="gmenu-sub gmenu-sub03">
+                            <li>
+                                <a href="http://176.34.11.254/graduates">卒業生の声</a>
+                            </li>
+                            <li>
+                                <a href="http://176.34.11.254/achievement">転職・案件実績</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="gmenu-main__items gmenu-main__items04 hover-mark close">
+                        <a href="">メディア</a>
+                        <ul class="gmenu-sub gmenu-sub04">
+                            <li>
+                                <a href="http://176.34.11.254/movie">動画一覧</a>
+                            </li>
+                            <li>
+                                <a href="http://176.34.11.254/media">掲載記事一覧</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="gmenu-main__items gmenu-main__items05 hover-mark close">
+                        <a href="http://176.34.11.254/faq">サポート</a>
+                        <ul class="gmenu-sub gmenu-sub05">
+                            <li>
+                                <a href="http://176.34.11.254/faq">よくあるご質問</a>
+                            </li>
+                            <li>
+                                <a href="http://176.34.11.254/inquiry">お問い合わせ</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="contact gmenu-main__items">
+                        <a href="http://176.34.11.254/application">受講お申し込み</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <article>
+            <div class="main-visual">
+                <div class="main-visual__bg">
+                    <div class="main-visual__layer1 layer-position">
+                        <div class="main-visual__ttl">
+                            <h1>
+                                <img src="./images/header-logo.svg" alt="メインタイトルのロゴ">
+                            </h1>
+                            <p>はじめまして。RaiseTech（レイズテック）は<br>
+                                最速で「稼げる」エンジニアになるための、<br>
+                                実践的なWebエンジニアリングスクールです
+                            </p>
+                            <p class="btn">
+                                <a href="https://raise-tech.net/about-raisetech" class="btn_ttl">マンガでわかるRaiseTech</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="main-visual__layer2 layer-position">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-bg">
+                <div class="section-wrap">
+                    <div class="contents">
+                        <div class="items doctrine">
+                            <div class="section-ttl">
+                                <p class="icon">
+                                    <i class="fa-solid fa-dumbbell"></i>
+                                </p>
+                                <h2>現場主義</h2>
+                            </div>
+                            <p>「プログラム」だけでは稼げない！ 現場で求められる「技術」のみ教えます。</p>
+                        </div>
+
+                        <div class="items teachers">
+                            <div class="section-ttl">
+                                <p class="icon">
+                                    <i class="fa-solid fa-chalkboard-user"></i> 
+                                </p>
+                                <h2>現役講師</h2>
+                            </div>
+                            <p>「今、求められている技術」をリアルタイムに教えてくれる、現役の技術者だけが講師です。</p>
+                        </div>
+
+                        <div class="items support">
+                            <div class="section-ttl">
+                                <p class="icon">
+                                    <i class="fa-solid fa-life-ring"></i>
+                                </p>
+                                <h2>徹底サポート</h2>
+                            </div>
+                            <p>期間中の質疑応答無制限！ 個別進捗管理！ 挫折させないサポートを徹底します。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="./hamburger.js"></script>
+</body>
